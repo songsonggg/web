@@ -1,0 +1,1039 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.web.mapper.base.MmallShippingBaseMapper">
+
+
+    <insert id="insertMmallShipping"  useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `mmall_shipping`
+        (
+        <trim suffixOverrides=",">
+                    <if test="id!=null">
+                        `id`,
+                    </if>
+                    <if test="userId!=null">
+                        `user_id`,
+                    </if>
+                    <if test="receiverName!=null">
+                        `receiver_name`,
+                    </if>
+                    <if test="receiverPhone!=null">
+                        `receiver_phone`,
+                    </if>
+                    <if test="receiverMobile!=null">
+                        `receiver_mobile`,
+                    </if>
+                    <if test="receiverProvince!=null">
+                        `receiver_province`,
+                    </if>
+                    <if test="receiverCity!=null">
+                        `receiver_city`,
+                    </if>
+                    <if test="receiverDistrict!=null">
+                        `receiver_district`,
+                    </if>
+                    <if test="receiverAddress!=null">
+                        `receiver_address`,
+                    </if>
+                    <if test="receiverZip!=null">
+                        `receiver_zip`,
+                    </if>
+                    <if test="createTime!=null">
+                        `create_time`,
+                    </if>
+                    <if test="updateTime!=null">
+                        `update_time`,
+                    </if>
+        </trim>
+        )
+        VALUES
+        (
+        <trim suffixOverrides=",">
+                <if test="id!=null">
+                    #{id},
+                </if>
+                <if test="userId!=null">
+                    #{userId},
+                </if>
+                <if test="receiverName!=null">
+                    #{receiverName},
+                </if>
+                <if test="receiverPhone!=null">
+                    #{receiverPhone},
+                </if>
+                <if test="receiverMobile!=null">
+                    #{receiverMobile},
+                </if>
+                <if test="receiverProvince!=null">
+                    #{receiverProvince},
+                </if>
+                <if test="receiverCity!=null">
+                    #{receiverCity},
+                </if>
+                <if test="receiverDistrict!=null">
+                    #{receiverDistrict},
+                </if>
+                <if test="receiverAddress!=null">
+                    #{receiverAddress},
+                </if>
+                <if test="receiverZip!=null">
+                    #{receiverZip},
+                </if>
+                <if test="createTime!=null">
+                    #{createTime},
+                </if>
+                <if test="updateTime!=null">
+                    #{updateTime},
+                </if>
+        </trim>
+        )
+    </insert>
+
+
+
+
+    <update id="updateMmallShipping">
+        UPDATE `mmall_shipping`
+        SET
+        <trim suffixOverrides=",">
+            <if test="userId != null">
+                `user_id` = #{userId},
+            </if>
+            <if test="receiverName != null and receiverName!=''">
+                `receiver_name` = #{receiverName},
+            </if>
+            <if test="receiverPhone != null and receiverPhone!=''">
+                `receiver_phone` = #{receiverPhone},
+            </if>
+            <if test="receiverMobile != null and receiverMobile!=''">
+                `receiver_mobile` = #{receiverMobile},
+            </if>
+            <if test="receiverProvince != null and receiverProvince!=''">
+                `receiver_province` = #{receiverProvince},
+            </if>
+            <if test="receiverCity != null and receiverCity!=''">
+                `receiver_city` = #{receiverCity},
+            </if>
+            <if test="receiverDistrict != null and receiverDistrict!=''">
+                `receiver_district` = #{receiverDistrict},
+            </if>
+            <if test="receiverAddress != null and receiverAddress!=''">
+                `receiver_address` = #{receiverAddress},
+            </if>
+            <if test="receiverZip != null and receiverZip!=''">
+                `receiver_zip` = #{receiverZip},
+            </if>
+            <if test="createTime != null">
+                `create_time` = #{createTime},
+            </if>
+            <if test="updateTime != null">
+                `update_time` = #{updateTime},
+            </if>
+        </trim>
+        WHERE
+        <trim suffixOverrides="and">
+                `id` = #{id} and
+        </trim>
+    </update>
+
+    <update id="update">
+        UPDATE `mmall_shipping`
+        SET
+        <trim suffixOverrides=",">
+        <if test="set.userId != null">
+            `user_id` = #{set.userId},
+        </if>
+        <if test="set.receiverName != null and set.receiverName!=''">
+            `receiver_name` = #{set.receiverName},
+        </if>
+        <if test="set.receiverPhone != null and set.receiverPhone!=''">
+            `receiver_phone` = #{set.receiverPhone},
+        </if>
+        <if test="set.receiverMobile != null and set.receiverMobile!=''">
+            `receiver_mobile` = #{set.receiverMobile},
+        </if>
+        <if test="set.receiverProvince != null and set.receiverProvince!=''">
+            `receiver_province` = #{set.receiverProvince},
+        </if>
+        <if test="set.receiverCity != null and set.receiverCity!=''">
+            `receiver_city` = #{set.receiverCity},
+        </if>
+        <if test="set.receiverDistrict != null and set.receiverDistrict!=''">
+            `receiver_district` = #{set.receiverDistrict},
+        </if>
+        <if test="set.receiverAddress != null and set.receiverAddress!=''">
+            `receiver_address` = #{set.receiverAddress},
+        </if>
+        <if test="set.receiverZip != null and set.receiverZip!=''">
+            `receiver_zip` = #{set.receiverZip},
+        </if>
+        <if test="set.createTime != null">
+            `create_time` = #{set.createTime},
+        </if>
+        <if test="set.updateTime != null">
+            `update_time` = #{set.updateTime},
+        </if>
+        </trim>
+        <trim prefix="where" suffixOverrides="and | or">
+                <if test="where.idList != null">
+                    `id` in
+                    <foreach collection="where.idList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.idSt !=null">
+                `id` >= #{where.idSt} and
+            </if>
+            <if test="where.idEd!=null">
+                `id` &lt;= #{where.idEd} and
+            </if>
+                <if test="where.userIdList != null">
+                    `user_id` in
+                    <foreach collection="where.userIdList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.userIdSt !=null">
+                `user_id` >= #{where.userIdSt} and
+            </if>
+            <if test="where.userIdEd!=null">
+                `user_id` &lt;= #{where.userIdEd} and
+            </if>
+                <if test="where.receiverNameList != null">
+                    `receiver_name` in
+                    <foreach collection="where.receiverNameList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test ="where.fuzzyReceiverName!=null and where.fuzzyReceiverName.size()>0">
+                (
+                <foreach collection="where.fuzzyReceiverName"  separator="or" item="item">
+                    `Receiver_name` like concat('%',#{item},'%')
+                </foreach>
+                ) and
+            </if>
+            <if test ="where.rightFuzzyReceiverName!=null and where.rightFuzzyReceiverName.size()>0">
+                (
+                <foreach collection="where.rightFuzzyReceiverName"  separator="or" item="item">
+                    `Receiver_name` like concat(#{item},'%')
+                </foreach>
+                ) and
+            </if>
+                <if test="where.receiverPhoneList != null">
+                    `receiver_phone` in
+                    <foreach collection="where.receiverPhoneList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test ="where.fuzzyReceiverPhone!=null and where.fuzzyReceiverPhone.size()>0">
+                (
+                <foreach collection="where.fuzzyReceiverPhone"  separator="or" item="item">
+                    `Receiver_phone` like concat('%',#{item},'%')
+                </foreach>
+                ) and
+            </if>
+            <if test ="where.rightFuzzyReceiverPhone!=null and where.rightFuzzyReceiverPhone.size()>0">
+                (
+                <foreach collection="where.rightFuzzyReceiverPhone"  separator="or" item="item">
+                    `Receiver_phone` like concat(#{item},'%')
+                </foreach>
+                ) and
+            </if>
+                <if test="where.receiverMobileList != null">
+                    `receiver_mobile` in
+                    <foreach collection="where.receiverMobileList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test ="where.fuzzyReceiverMobile!=null and where.fuzzyReceiverMobile.size()>0">
+                (
+                <foreach collection="where.fuzzyReceiverMobile"  separator="or" item="item">
+                    `Receiver_mobile` like concat('%',#{item},'%')
+                </foreach>
+                ) and
+            </if>
+            <if test ="where.rightFuzzyReceiverMobile!=null and where.rightFuzzyReceiverMobile.size()>0">
+                (
+                <foreach collection="where.rightFuzzyReceiverMobile"  separator="or" item="item">
+                    `Receiver_mobile` like concat(#{item},'%')
+                </foreach>
+                ) and
+            </if>
+                <if test="where.receiverProvinceList != null">
+                    `receiver_province` in
+                    <foreach collection="where.receiverProvinceList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test ="where.fuzzyReceiverProvince!=null and where.fuzzyReceiverProvince.size()>0">
+                (
+                <foreach collection="where.fuzzyReceiverProvince"  separator="or" item="item">
+                    `Receiver_province` like concat('%',#{item},'%')
+                </foreach>
+                ) and
+            </if>
+            <if test ="where.rightFuzzyReceiverProvince!=null and where.rightFuzzyReceiverProvince.size()>0">
+                (
+                <foreach collection="where.rightFuzzyReceiverProvince"  separator="or" item="item">
+                    `Receiver_province` like concat(#{item},'%')
+                </foreach>
+                ) and
+            </if>
+                <if test="where.receiverCityList != null">
+                    `receiver_city` in
+                    <foreach collection="where.receiverCityList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test ="where.fuzzyReceiverCity!=null and where.fuzzyReceiverCity.size()>0">
+                (
+                <foreach collection="where.fuzzyReceiverCity"  separator="or" item="item">
+                    `Receiver_city` like concat('%',#{item},'%')
+                </foreach>
+                ) and
+            </if>
+            <if test ="where.rightFuzzyReceiverCity!=null and where.rightFuzzyReceiverCity.size()>0">
+                (
+                <foreach collection="where.rightFuzzyReceiverCity"  separator="or" item="item">
+                    `Receiver_city` like concat(#{item},'%')
+                </foreach>
+                ) and
+            </if>
+                <if test="where.receiverDistrictList != null">
+                    `receiver_district` in
+                    <foreach collection="where.receiverDistrictList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test ="where.fuzzyReceiverDistrict!=null and where.fuzzyReceiverDistrict.size()>0">
+                (
+                <foreach collection="where.fuzzyReceiverDistrict"  separator="or" item="item">
+                    `Receiver_district` like concat('%',#{item},'%')
+                </foreach>
+                ) and
+            </if>
+            <if test ="where.rightFuzzyReceiverDistrict!=null and where.rightFuzzyReceiverDistrict.size()>0">
+                (
+                <foreach collection="where.rightFuzzyReceiverDistrict"  separator="or" item="item">
+                    `Receiver_district` like concat(#{item},'%')
+                </foreach>
+                ) and
+            </if>
+                <if test="where.receiverAddressList != null">
+                    `receiver_address` in
+                    <foreach collection="where.receiverAddressList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test ="where.fuzzyReceiverAddress!=null and where.fuzzyReceiverAddress.size()>0">
+                (
+                <foreach collection="where.fuzzyReceiverAddress"  separator="or" item="item">
+                    `Receiver_address` like concat('%',#{item},'%')
+                </foreach>
+                ) and
+            </if>
+            <if test ="where.rightFuzzyReceiverAddress!=null and where.rightFuzzyReceiverAddress.size()>0">
+                (
+                <foreach collection="where.rightFuzzyReceiverAddress"  separator="or" item="item">
+                    `Receiver_address` like concat(#{item},'%')
+                </foreach>
+                ) and
+            </if>
+                <if test="where.receiverZipList != null">
+                    `receiver_zip` in
+                    <foreach collection="where.receiverZipList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test ="where.fuzzyReceiverZip!=null and where.fuzzyReceiverZip.size()>0">
+                (
+                <foreach collection="where.fuzzyReceiverZip"  separator="or" item="item">
+                    `Receiver_zip` like concat('%',#{item},'%')
+                </foreach>
+                ) and
+            </if>
+            <if test ="where.rightFuzzyReceiverZip!=null and where.rightFuzzyReceiverZip.size()>0">
+                (
+                <foreach collection="where.rightFuzzyReceiverZip"  separator="or" item="item">
+                    `Receiver_zip` like concat(#{item},'%')
+                </foreach>
+                ) and
+            </if>
+                <if test="where.createTimeList != null">
+                    `create_time` in
+                    <foreach collection="where.createTimeList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.createTimeSt !=null">
+                `create_time` >= #{where.createTimeSt} and
+            </if>
+            <if test="where.createTimeEd!=null">
+                `create_time` &lt;= #{where.createTimeEd} and
+            </if>
+                <if test="where.updateTimeList != null">
+                    `update_time` in
+                    <foreach collection="where.updateTimeList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            <if test="where.updateTimeSt !=null">
+                `update_time` >= #{where.updateTimeSt} and
+            </if>
+            <if test="where.updateTimeEd!=null">
+                `update_time` &lt;= #{where.updateTimeEd} and
+            </if>
+        </trim>
+    </update>
+
+
+    <resultMap type="com.example.web.pojo.MmallShipping" id="MmallShippingMap">
+        <result property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="receiverName" column="receiver_name"/>
+        <result property="receiverPhone" column="receiver_phone"/>
+        <result property="receiverMobile" column="receiver_mobile"/>
+        <result property="receiverProvince" column="receiver_province"/>
+        <result property="receiverCity" column="receiver_city"/>
+        <result property="receiverDistrict" column="receiver_district"/>
+        <result property="receiverAddress" column="receiver_address"/>
+        <result property="receiverZip" column="receiver_zip"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+
+    <select id="queryMmallShipping" resultMap="MmallShippingMap">
+        select
+        <include refid="baseResult"></include>
+        from  `mmall_shipping`
+        <trim prefix="where" suffixOverrides="and | or">
+            <if test="id != null">
+                `id` = #{id} and
+            </if>
+            <if test="userId != null">
+                `user_id` = #{userId} and
+            </if>
+            <if test="receiverName != null and receiverName!=''">
+                `receiver_name` = #{receiverName} and
+            </if>
+            <if test="receiverPhone != null and receiverPhone!=''">
+                `receiver_phone` = #{receiverPhone} and
+            </if>
+            <if test="receiverMobile != null and receiverMobile!=''">
+                `receiver_mobile` = #{receiverMobile} and
+            </if>
+            <if test="receiverProvince != null and receiverProvince!=''">
+                `receiver_province` = #{receiverProvince} and
+            </if>
+            <if test="receiverCity != null and receiverCity!=''">
+                `receiver_city` = #{receiverCity} and
+            </if>
+            <if test="receiverDistrict != null and receiverDistrict!=''">
+                `receiver_district` = #{receiverDistrict} and
+            </if>
+            <if test="receiverAddress != null and receiverAddress!=''">
+                `receiver_address` = #{receiverAddress} and
+            </if>
+            <if test="receiverZip != null and receiverZip!=''">
+                `receiver_zip` = #{receiverZip} and
+            </if>
+            <if test="createTime != null">
+                `create_time` = #{createTime} and
+            </if>
+            <if test="updateTime != null">
+                `update_time` = #{updateTime} and
+            </if>
+            <if test = "(_parameter instanceof com.example.web.pojo.MmallShipping$QueryBuilder) == true">
+                <if test="idList != null">
+                    `id` in
+                    <foreach collection="idList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="idSt !=null">
+                    `id` >= #{idSt} and
+                </if>
+                <if test="idEd!=null">
+                    `id` &lt;= #{idEd} and
+                </if>
+                <if test="userIdList != null">
+                    `user_id` in
+                    <foreach collection="userIdList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="userIdSt !=null">
+                    `user_id` >= #{userIdSt} and
+                </if>
+                <if test="userIdEd!=null">
+                    `user_id` &lt;= #{userIdEd} and
+                </if>
+                <if test="receiverNameList != null">
+                    `receiver_name` in
+                    <foreach collection="receiverNameList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyReceiverName!=null and fuzzyReceiverName.size()>0">
+                    (
+                    <foreach collection="fuzzyReceiverName"  separator="or" item="item">
+                        `Receiver_name` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyReceiverName!=null and rightFuzzyReceiverName.size()>0">
+                    (
+                    <foreach collection="rightFuzzyReceiverName"  separator="or" item="item">
+                        `Receiver_name` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="receiverPhoneList != null">
+                    `receiver_phone` in
+                    <foreach collection="receiverPhoneList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyReceiverPhone!=null and fuzzyReceiverPhone.size()>0">
+                    (
+                    <foreach collection="fuzzyReceiverPhone"  separator="or" item="item">
+                        `Receiver_phone` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyReceiverPhone!=null and rightFuzzyReceiverPhone.size()>0">
+                    (
+                    <foreach collection="rightFuzzyReceiverPhone"  separator="or" item="item">
+                        `Receiver_phone` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="receiverMobileList != null">
+                    `receiver_mobile` in
+                    <foreach collection="receiverMobileList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyReceiverMobile!=null and fuzzyReceiverMobile.size()>0">
+                    (
+                    <foreach collection="fuzzyReceiverMobile"  separator="or" item="item">
+                        `Receiver_mobile` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyReceiverMobile!=null and rightFuzzyReceiverMobile.size()>0">
+                    (
+                    <foreach collection="rightFuzzyReceiverMobile"  separator="or" item="item">
+                        `Receiver_mobile` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="receiverProvinceList != null">
+                    `receiver_province` in
+                    <foreach collection="receiverProvinceList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyReceiverProvince!=null and fuzzyReceiverProvince.size()>0">
+                    (
+                    <foreach collection="fuzzyReceiverProvince"  separator="or" item="item">
+                        `Receiver_province` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyReceiverProvince!=null and rightFuzzyReceiverProvince.size()>0">
+                    (
+                    <foreach collection="rightFuzzyReceiverProvince"  separator="or" item="item">
+                        `Receiver_province` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="receiverCityList != null">
+                    `receiver_city` in
+                    <foreach collection="receiverCityList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyReceiverCity!=null and fuzzyReceiverCity.size()>0">
+                    (
+                    <foreach collection="fuzzyReceiverCity"  separator="or" item="item">
+                        `Receiver_city` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyReceiverCity!=null and rightFuzzyReceiverCity.size()>0">
+                    (
+                    <foreach collection="rightFuzzyReceiverCity"  separator="or" item="item">
+                        `Receiver_city` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="receiverDistrictList != null">
+                    `receiver_district` in
+                    <foreach collection="receiverDistrictList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyReceiverDistrict!=null and fuzzyReceiverDistrict.size()>0">
+                    (
+                    <foreach collection="fuzzyReceiverDistrict"  separator="or" item="item">
+                        `Receiver_district` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyReceiverDistrict!=null and rightFuzzyReceiverDistrict.size()>0">
+                    (
+                    <foreach collection="rightFuzzyReceiverDistrict"  separator="or" item="item">
+                        `Receiver_district` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="receiverAddressList != null">
+                    `receiver_address` in
+                    <foreach collection="receiverAddressList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyReceiverAddress!=null and fuzzyReceiverAddress.size()>0">
+                    (
+                    <foreach collection="fuzzyReceiverAddress"  separator="or" item="item">
+                        `Receiver_address` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyReceiverAddress!=null and rightFuzzyReceiverAddress.size()>0">
+                    (
+                    <foreach collection="rightFuzzyReceiverAddress"  separator="or" item="item">
+                        `Receiver_address` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="receiverZipList != null">
+                    `receiver_zip` in
+                    <foreach collection="receiverZipList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyReceiverZip!=null and fuzzyReceiverZip.size()>0">
+                    (
+                    <foreach collection="fuzzyReceiverZip"  separator="or" item="item">
+                        `Receiver_zip` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyReceiverZip!=null and rightFuzzyReceiverZip.size()>0">
+                    (
+                    <foreach collection="rightFuzzyReceiverZip"  separator="or" item="item">
+                        `Receiver_zip` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="createTimeList != null">
+                    `create_time` in
+                    <foreach collection="createTimeList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="createTimeSt !=null">
+                    `create_time` >= #{createTimeSt} and
+                </if>
+                <if test="createTimeEd!=null">
+                    `create_time` &lt;= #{createTimeEd} and
+                </if>
+                <if test="updateTimeList != null">
+                    `update_time` in
+                    <foreach collection="updateTimeList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="updateTimeSt !=null">
+                    `update_time` >= #{updateTimeSt} and
+                </if>
+                <if test="updateTimeEd!=null">
+                    `update_time` &lt;= #{updateTimeEd} and
+                </if>
+            </if>
+        </trim>
+    </select>
+
+    <select id="queryMmallShippingLimit1" resultMap="MmallShippingMap">
+        select
+        <include refid="baseResult"></include>
+        from  `mmall_shipping`
+        <trim prefix="where" suffixOverrides="and | or">
+            <if test="id != null">
+                `id` = #{id} and
+            </if>
+            <if test="userId != null">
+                `user_id` = #{userId} and
+            </if>
+            <if test="receiverName != null and receiverName!=''">
+                `receiver_name` = #{receiverName} and
+            </if>
+            <if test="receiverPhone != null and receiverPhone!=''">
+                `receiver_phone` = #{receiverPhone} and
+            </if>
+            <if test="receiverMobile != null and receiverMobile!=''">
+                `receiver_mobile` = #{receiverMobile} and
+            </if>
+            <if test="receiverProvince != null and receiverProvince!=''">
+                `receiver_province` = #{receiverProvince} and
+            </if>
+            <if test="receiverCity != null and receiverCity!=''">
+                `receiver_city` = #{receiverCity} and
+            </if>
+            <if test="receiverDistrict != null and receiverDistrict!=''">
+                `receiver_district` = #{receiverDistrict} and
+            </if>
+            <if test="receiverAddress != null and receiverAddress!=''">
+                `receiver_address` = #{receiverAddress} and
+            </if>
+            <if test="receiverZip != null and receiverZip!=''">
+                `receiver_zip` = #{receiverZip} and
+            </if>
+            <if test="createTime != null">
+                `create_time` = #{createTime} and
+            </if>
+            <if test="updateTime != null">
+                `update_time` = #{updateTime} and
+            </if>
+            <if test = "(_parameter instanceof com.example.web.pojo.MmallShipping$QueryBuilder) == true">
+                    <if test="idList != null">
+                        `id` in
+                        <foreach collection="idList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="idSt !=null">
+                    `id` >= #{idSt} and
+                </if>
+                <if test="idEd!=null">
+                    `id` &lt;= #{idEd} and
+                </if>
+                    <if test="userIdList != null">
+                        `user_id` in
+                        <foreach collection="userIdList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="userIdSt !=null">
+                    `user_id` >= #{userIdSt} and
+                </if>
+                <if test="userIdEd!=null">
+                    `user_id` &lt;= #{userIdEd} and
+                </if>
+                    <if test="receiverNameList != null">
+                        `receiver_name` in
+                        <foreach collection="receiverNameList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyReceiverName!=null and fuzzyReceiverName.size()>0">
+                    (
+                    <foreach collection="fuzzyReceiverName"  separator="or" item="item">
+                        `Receiver_name` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyReceiverName!=null and rightFuzzyReceiverName.size()>0">
+                    (
+                    <foreach collection="rightFuzzyReceiverName"  separator="or" item="item">
+                        `Receiver_name` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="receiverPhoneList != null">
+                        `receiver_phone` in
+                        <foreach collection="receiverPhoneList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyReceiverPhone!=null and fuzzyReceiverPhone.size()>0">
+                    (
+                    <foreach collection="fuzzyReceiverPhone"  separator="or" item="item">
+                        `Receiver_phone` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyReceiverPhone!=null and rightFuzzyReceiverPhone.size()>0">
+                    (
+                    <foreach collection="rightFuzzyReceiverPhone"  separator="or" item="item">
+                        `Receiver_phone` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="receiverMobileList != null">
+                        `receiver_mobile` in
+                        <foreach collection="receiverMobileList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyReceiverMobile!=null and fuzzyReceiverMobile.size()>0">
+                    (
+                    <foreach collection="fuzzyReceiverMobile"  separator="or" item="item">
+                        `Receiver_mobile` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyReceiverMobile!=null and rightFuzzyReceiverMobile.size()>0">
+                    (
+                    <foreach collection="rightFuzzyReceiverMobile"  separator="or" item="item">
+                        `Receiver_mobile` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="receiverProvinceList != null">
+                        `receiver_province` in
+                        <foreach collection="receiverProvinceList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyReceiverProvince!=null and fuzzyReceiverProvince.size()>0">
+                    (
+                    <foreach collection="fuzzyReceiverProvince"  separator="or" item="item">
+                        `Receiver_province` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyReceiverProvince!=null and rightFuzzyReceiverProvince.size()>0">
+                    (
+                    <foreach collection="rightFuzzyReceiverProvince"  separator="or" item="item">
+                        `Receiver_province` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="receiverCityList != null">
+                        `receiver_city` in
+                        <foreach collection="receiverCityList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyReceiverCity!=null and fuzzyReceiverCity.size()>0">
+                    (
+                    <foreach collection="fuzzyReceiverCity"  separator="or" item="item">
+                        `Receiver_city` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyReceiverCity!=null and rightFuzzyReceiverCity.size()>0">
+                    (
+                    <foreach collection="rightFuzzyReceiverCity"  separator="or" item="item">
+                        `Receiver_city` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="receiverDistrictList != null">
+                        `receiver_district` in
+                        <foreach collection="receiverDistrictList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyReceiverDistrict!=null and fuzzyReceiverDistrict.size()>0">
+                    (
+                    <foreach collection="fuzzyReceiverDistrict"  separator="or" item="item">
+                        `Receiver_district` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyReceiverDistrict!=null and rightFuzzyReceiverDistrict.size()>0">
+                    (
+                    <foreach collection="rightFuzzyReceiverDistrict"  separator="or" item="item">
+                        `Receiver_district` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="receiverAddressList != null">
+                        `receiver_address` in
+                        <foreach collection="receiverAddressList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyReceiverAddress!=null and fuzzyReceiverAddress.size()>0">
+                    (
+                    <foreach collection="fuzzyReceiverAddress"  separator="or" item="item">
+                        `Receiver_address` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyReceiverAddress!=null and rightFuzzyReceiverAddress.size()>0">
+                    (
+                    <foreach collection="rightFuzzyReceiverAddress"  separator="or" item="item">
+                        `Receiver_address` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="receiverZipList != null">
+                        `receiver_zip` in
+                        <foreach collection="receiverZipList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test ="fuzzyReceiverZip!=null and fuzzyReceiverZip.size()>0">
+                    (
+                    <foreach collection="fuzzyReceiverZip"  separator="or" item="item">
+                        `Receiver_zip` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyReceiverZip!=null and rightFuzzyReceiverZip.size()>0">
+                    (
+                    <foreach collection="rightFuzzyReceiverZip"  separator="or" item="item">
+                        `Receiver_zip` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                    <if test="createTimeList != null">
+                        `create_time` in
+                        <foreach collection="createTimeList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="createTimeSt !=null">
+                    `create_time` >= #{createTimeSt} and
+                </if>
+                <if test="createTimeEd!=null">
+                    `create_time` &lt;= #{createTimeEd} and
+                </if>
+                    <if test="updateTimeList != null">
+                        `update_time` in
+                        <foreach collection="updateTimeList" close=")" open="(" separator="," item="item">
+                            #{item}
+                        </foreach> and
+                    </if>
+                <if test="updateTimeSt !=null">
+                    `update_time` >= #{updateTimeSt} and
+                </if>
+                <if test="updateTimeEd!=null">
+                    `update_time` &lt;= #{updateTimeEd} and
+                </if>
+            </if>
+        </trim>
+        limit 1
+    </select>
+
+    <sql id="allResult">
+        <trim suffixOverrides=",">
+        `id`,
+        `user_id`,
+        `receiver_name`,
+        `receiver_phone`,
+        `receiver_mobile`,
+        `receiver_province`,
+        `receiver_city`,
+        `receiver_district`,
+        `receiver_address`,
+        `receiver_zip`,
+        `create_time`,
+        `update_time`,
+        </trim>
+    </sql>
+
+
+
+    <sql id="baseResult">
+        <trim suffixOverrides=",">
+            <if test = "(_parameter instanceof com.example.web.pojo.MmallShipping$QueryBuilder) == true">
+
+                <if test="fetchFields==null">
+                    <include refid="allResult"></include>
+                </if>
+                <if test="fetchFields!=null">
+                    <if test="fetchFields.AllFields !=null">
+                        <include refid="allResult"></include>
+                    </if>
+                    <if test="fetchFields.AllFields ==null and fetchFields.fetchFields==null and fetchFields.excludeFields==null and fetchFields.otherFields==null">
+                        <include refid="allResult"></include>
+                    </if>
+                    <if test="fetchFields.AllFields==null and fetchFields.fetchFields!=null">
+                    <if test="fetchFields.fetchFields.id==true">
+                        `id`,
+                    </if>
+                    <if test="fetchFields.fetchFields.userId==true">
+                        `user_id`,
+                    </if>
+                    <if test="fetchFields.fetchFields.receiverName==true">
+                        `receiver_name`,
+                    </if>
+                    <if test="fetchFields.fetchFields.receiverPhone==true">
+                        `receiver_phone`,
+                    </if>
+                    <if test="fetchFields.fetchFields.receiverMobile==true">
+                        `receiver_mobile`,
+                    </if>
+                    <if test="fetchFields.fetchFields.receiverProvince==true">
+                        `receiver_province`,
+                    </if>
+                    <if test="fetchFields.fetchFields.receiverCity==true">
+                        `receiver_city`,
+                    </if>
+                    <if test="fetchFields.fetchFields.receiverDistrict==true">
+                        `receiver_district`,
+                    </if>
+                    <if test="fetchFields.fetchFields.receiverAddress==true">
+                        `receiver_address`,
+                    </if>
+                    <if test="fetchFields.fetchFields.receiverZip==true">
+                        `receiver_zip`,
+                    </if>
+                    <if test="fetchFields.fetchFields.createTime==true">
+                        `create_time`,
+                    </if>
+                    <if test="fetchFields.fetchFields.updateTime==true">
+                        `update_time`,
+                    </if>
+                    </if>
+                    <if test="fetchFields.AllFields==null and fetchFields.excludeFields!=null">
+                    <if test="fetchFields.excludeFields.id==null">
+                        `id`,
+                    </if>
+                    <if test="fetchFields.excludeFields.userId==null">
+                        `user_id`,
+                    </if>
+                    <if test="fetchFields.excludeFields.receiverName==null">
+                        `receiver_name`,
+                    </if>
+                    <if test="fetchFields.excludeFields.receiverPhone==null">
+                        `receiver_phone`,
+                    </if>
+                    <if test="fetchFields.excludeFields.receiverMobile==null">
+                        `receiver_mobile`,
+                    </if>
+                    <if test="fetchFields.excludeFields.receiverProvince==null">
+                        `receiver_province`,
+                    </if>
+                    <if test="fetchFields.excludeFields.receiverCity==null">
+                        `receiver_city`,
+                    </if>
+                    <if test="fetchFields.excludeFields.receiverDistrict==null">
+                        `receiver_district`,
+                    </if>
+                    <if test="fetchFields.excludeFields.receiverAddress==null">
+                        `receiver_address`,
+                    </if>
+                    <if test="fetchFields.excludeFields.receiverZip==null">
+                        `receiver_zip`,
+                    </if>
+                    <if test="fetchFields.excludeFields.createTime==null">
+                        `create_time`,
+                    </if>
+                    <if test="fetchFields.excludeFields.updateTime==null">
+                        `update_time`,
+                    </if>
+                    </if>
+                    <if test="fetchFields.otherFields!=null and fetchFields.otherFields.size>0">
+                        <foreach collection="fetchFields.otherFields" index="index" item="item" separator=",">
+                        `#{item}`
+                        </foreach>
+                    </if>
+                </if>
+            </if>
+            <if test="(_parameter instanceof com.example.web.pojo.MmallShipping$QueryBuilder) == false" >
+                <include refid="allResult"></include>
+            </if>
+
+        </trim>
+    </sql>
+
+
+</mapper>
